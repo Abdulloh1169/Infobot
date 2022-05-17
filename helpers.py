@@ -7,8 +7,12 @@ from telegram import (
 
 def build_keyboard(objects, resize_keyboard = True):
     keyboard = []
-    for object in objects:
-        keyboard.append([object.name])
+    length = len(objects)
+    for i in range(0, length, 2):
+        if i < length-1:
+            keyboard.append([objects[i].name, objects[i+1].name])
+        else: 
+            keyboard.append([objects[i].name])
     
     sample = objects[0]
     if(sample.parent != None and sample.parent.parent != None):
